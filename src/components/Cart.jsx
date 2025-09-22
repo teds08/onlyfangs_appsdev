@@ -2,7 +2,7 @@ import React from 'react'
 
 function Cart({ items = [], onRemove = () => {} }) {
   if (!items || items.length === 0) {
-    return <p className="text-center text-gray-600">Your cart is empty.</p>;
+    return <p className="text-center text-gray-600">Your cart is empty.Add To Cart na Bossing!</p>;
   }
 
   return (
