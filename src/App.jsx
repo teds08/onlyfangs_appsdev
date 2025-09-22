@@ -200,8 +200,8 @@ function App() {
             </>
           )}
         </main>
-      
-        <div className="fixed bottom-6 right-6 z-50">
+
+        <div className="fixed bottom-6 max-[600px]:bottom-15 lg:bottom-4 right-6 z-50">
           <button
             onClick={() => setIsCartOpen(true)}
             className="relative bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2"
@@ -215,7 +215,7 @@ function App() {
 
         {/* cart moDal */}
         {isCartOpen && (
-          <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40">
+          <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 ">
             <div className="bg-white rounded-lg w-11/12 md:w-2/3 max-h-[80vh] overflow-auto p-4">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold">Your Cart ({cartItems.length})</h3>
