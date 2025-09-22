@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { HiShoppingCart } from "react-icons/hi";
 import Card from "./components/Card";
+import Cart from './components/cart';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -9,6 +11,11 @@ function App() {
   const [sort, setSort] = useState("");
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [category, setCategory] = useState("All");
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
+
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(9);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -25,12 +32,18 @@ function App() {
     fetchProducts();
   }, []);
 
+  
   useEffect(() => {
+    const t = setTimeout(() => setDebouncedSearch(search), 600);
+    return () => clearTimeout(t);
+  }, [search]);
+
+  const filterAndSort = useCallback(() => {
     let result = [...products];
 
-    if (search.trim() !== "") {
+    if (debouncedSearch.trim() !== "") {
       result = result.filter((p) =>
-        p.title.toLowerCase().includes(search.toLowerCase())
+        p.title.toLowerCase().includes(debouncedSearch.toLowerCase())
       );
     }
 
@@ -48,48 +61,98 @@ function App() {
       result.sort((a, b) => b.price - a.price);
     }
 
-    setFiltered(result);
-  }, [search, sort, priceRange, category, products]);
+    return result;
+  }, [products, debouncedSearch, category, priceRange, sort]);
+
+  useEffect(() => {
+    const res = filterAndSort();
+    setFiltered(res);
+    setCurrentPage(1); 
+  }, [filterAndSort]);
+
+  const paginated = filtered.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+
+  const goToPage = (n) => setCurrentPage(n < 1 ? 1 : n);
+
+  const [cartItems, setCartItems] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleBuy = (product) => {
+    setCartItems((prev) => [...prev, product]);
+    console.log('Added to in-memory cart:', product.title);
+  };
+
+  const handleRemoveFromCart = (index) => {
+    setCartItems((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  
+  const loadSwal = () => {
+    if (typeof window !== 'undefined' && window.Swal) return Promise.resolve(window.Swal);
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/sweetalert2@11';
+      s.async = true;
+      s.onload = () => resolve(window.Swal);
+      s.onerror = () => reject(new Error('Failed to load SweetAlert2'));
+      document.head.appendChild(s);
+    });
+  };
+
+  const handleBuyAll = async () => {
+    if (!cartItems || cartItems.length === 0) {
+      try {
+        const Swal = await loadSwal();
+        Swal.fire({ icon: 'info', title: 'Your cart is empty.' });
+      } catch {
+        alert('Your cart is empty.');
+      }
+      return;
+    }
+
+    try {
+      const Swal = await loadSwal();
+      await Swal.fire({ icon: 'success', title: 'Successfully Buy Items! Na Bodol ka Bossing! 🤞' });
+    } catch (err) {
+   
+      alert('Successfully Buy Items!');
+    }
+
+   
+    setCartItems([]);
+    setIsCartOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">🛍️ Product Store</h1>
-
-      <div className="flex flex-col md:flex-row gap-6">
-      
-        <aside className="w-full md:w-1/4 bg-white rounded-2xl shadow p-4 h-fit">
-          <h2 className="text-lg font-semibold mb-4">Filters</h2>
-
-     
+      <h1 className="text-3xl font-bold mb-6 text-center">🛍️ OnlyFangs Store</h1>
+      <div className="flex flex-col gap-6">
+    
+  <div className="w-full bg-white rounded-2xl shadow p-4 flex flex-col md:flex-row gap-3 items-center justify-center">
           <input
             type="text"
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border rounded-lg px-3 py-2 w-full mb-4 custom-input"
+            className="border rounded-lg px-3 py-2 w-full md:w-1/3 custom-input"
           />
 
-          <label className="block text-sm font-medium mb-1">Sort</label>
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value)}
-            className="border rounded-lg px-3 py-2 w-full mb-4 custom-input"
+            className="border rounded-lg px-3 py-2 w-full md:w-1/6 custom-input"
           >
             <option value="">Default</option>
             <option value="low-high">Price: Low to High</option>
             <option value="high-low">Price: High to Low</option>
           </select>
 
-      
-          <label className="block text-sm font-medium mb-1">Price Range</label>
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2">
             <input
               type="number"
               placeholder="Min"
               value={priceRange[0]}
-              onChange={(e) =>
-                setPriceRange([Number(e.target.value), priceRange[1]])
-              }
+              onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
               className="border rounded-lg px-2 py-1 w-20 custom-input"
             />
             <span>-</span>
@@ -97,18 +160,15 @@ function App() {
               type="number"
               placeholder="Max"
               value={priceRange[1]}
-              onChange={(e) =>
-                setPriceRange([priceRange[0], Number(e.target.value)])
-              }
+              onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
               className="border rounded-lg px-2 py-1 w-20 custom-input"
             />
           </div>
 
-          <label className="block text-sm font-medium mb-1">Category</label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="border rounded-lg px-3 py-2 w-full custom-input"
+            className="border rounded-lg px-3 py-2 w-full md:w-1/6 custom-input"
           >
             <option value="All">All</option>
             <option value="beauty">Beauty</option>
@@ -116,28 +176,58 @@ function App() {
             <option value="fragrances">Fragrances</option>
             <option value="groceries">Groceries</option>
           </select>
-        </aside>
 
+         
+        </div>
 
-        <main className="flex-1">
+        <main>
           {filtered.length === 0 ? (
-            <p className="text-center text-gray-500 mt-10 custom-input">
-              No products found.
-            </p>
+            <p className="text-center text-gray-500 mt-10 custom-input">No products found.</p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.map((product) => (
-                <Card
-                  key={product.id}
-                  title={product.title}
-                  price={product.price}
-                  description={product.description}
-                  images={product.images}
-                />
-              ))}
-            </div>
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {paginated.map((product) => (
+                  <Card key={product.id} product={product} onBuy={handleBuy} />
+                ))}
+              </div>
+
+          
+              <div className="mt-6 flex items-center justify-center gap-3">
+                <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Prev</button>
+                <div className="px-3 py-1 rounded bg-white border">Page {currentPage}</div>
+                <button onClick={() => goToPage(currentPage + 1)} disabled={paginated.length < pageSize} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Next</button>
+              </div>
+            </>
           )}
         </main>
+      
+        <div className="fixed bottom-6 right-6 z-50">
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="relative bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2"
+            aria-label="Open cart"
+          >
+             <HiShoppingCart className="w-5 h-5" />
+            <span>Cart</span>
+            <span className="ml-2 inline-flex items-center justify-center w-6 h-6 text-xs font-semibold bg-white text-blue-600 rounded-full">{cartItems.length}</span>
+          </button>
+        </div>
+
+        {/* cart moDal */}
+        {isCartOpen && (
+          <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40">
+            <div className="bg-white rounded-lg w-11/12 md:w-2/3 max-h-[80vh] overflow-auto p-4">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold">Your Cart ({cartItems.length})</h3>
+                <div className="flex items-center gap-2">
+                  <button onClick={handleBuyAll} className="px-3 py-1 bg-green-600 text-white rounded">Buy all</button>
+                  <button onClick={() => setIsCartOpen(false)} className="px-3 py-1 border rounded">Close</button>
+                </div>
+              </div>
+              <Cart items={cartItems} onRemove={handleRemoveFromCart} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
