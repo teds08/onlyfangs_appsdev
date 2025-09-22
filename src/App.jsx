@@ -103,7 +103,7 @@ function App() {
     if (!cartItems || cartItems.length === 0) {
       try {
         const Swal = await loadSwal();
-        Swal.fire({ icon: 'info', title: 'Your cart is empty.' });
+        Swal.fire({ icon: 'info', title: 'Your cart is empty. Add To Cart na Bossing!' });
       } catch {
         alert('Your cart is empty.');
       }
