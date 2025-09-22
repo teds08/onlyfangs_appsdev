@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { HiShoppingCart } from "react-icons/hi";
 import Card from "./components/Card";
-import Cart from './components/cart';
+import Cart from './components/Addcart';
 
 function App() {
   const [products, setProducts] = useState([]);
