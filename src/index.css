@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+
+.custom-input{
+      border: 2px solid #7978787e;
+  border-radius: 8px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
