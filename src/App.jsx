@@ -34,7 +34,7 @@ function App() {
 
   
   useEffect(() => {
-    const t = setTimeout(() => setDebouncedSearch(search), 600);
+    const t = setTimeout(() => setDebouncedSearch(search), 900);
     return () => clearTimeout(t);
   }, [search]);
 
@@ -182,6 +182,12 @@ function App() {
         </div>
 
         <main>
+             <div className="mt-6 flex items-center justify-center gap-3">
+                <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Prev</button>
+                <div className="px-3 py-1 rounded bg-white border">Page {currentPage}</div>
+                <button onClick={() => goToPage(currentPage + 1)} disabled={paginated.length < pageSize} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Next</button>
+              </div>
+
           {filtered.length === 0 ? (
             <p className="text-center text-gray-500 mt-10 custom-input">No products found.</p>
           ) : (
