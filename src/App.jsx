@@ -196,11 +196,7 @@ function App() {
         </div>
         <main className="mt-32 md:mt-20 mb-10 ">
            <h1 className="text-3xl  max-[600px]:text-2xl  max-[600px]:mt-40 mt-25 max-[769px]:mt-40 font-bold mb-6 text-center">🛍️ OnlyFangs Store</h1>
-             <div className="mt-6 flex items-center justify-center gap-3">
-                <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Prev</button>
-                <div className="px-3 py-1 rounded bg-white border">Page {currentPage}</div>
-                <button onClick={() => goToPage(currentPage + 1)} disabled={paginated.length < pageSize} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Next</button>
-              </div>
+            
 
           {filtered.length === 0 ? (
             <p className="text-center text-gray-500 mt-10 custom-input">No products found.</p>
@@ -208,6 +204,11 @@ function App() {
             <>
               <div className="mb-6 mt-4">
                 <FeaturedCarousel items={filtered.slice(0, 5)} onBuy={handleBuy} />
+              </div>
+                 <div className="mt-6 flex items-center justify-center gap-3">
+                <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Prev</button>
+                <div className="px-3 py-1 rounded bg-white border">Page {currentPage}</div>
+                <button onClick={() => goToPage(currentPage + 1)} disabled={paginated.length < pageSize} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Next</button>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {paginated.map((product) => (
