@@ -134,13 +134,13 @@ function App() {
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border rounded-lg px-3 py-2 w-full md:w-1/3 custom-input"
+            className="border rounded-lg px-2 py-1 w-full md:w-2/5 custom-input"
           />
 
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value)}
-            className="border rounded-lg px-3 py-2 w-full md:w-1/6 custom-input"
+            className="border rounded-lg px-2 py-1 w-full md:w-1/6 custom-input"
           >
             <option value="">Default</option>
             <option value="low-high">Price: Low to High</option>
@@ -161,14 +161,14 @@ function App() {
               placeholder="Max"
               value={priceRange[1]}
               onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-              className="border rounded-lg px-2 py-1 w-20 custom-input"
+              className="border rounded-lg px- py-1 w-25 custom-input"
             />
           </div>
 
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="border rounded-lg px-3 py-2 w-full md:w-1/6 custom-input"
+            className="border rounded-lg px-2 py-1 w-full md:w-1/6 custom-input"
           >
             <option value="All">All</option>
             <option value="beauty">Beauty</option>

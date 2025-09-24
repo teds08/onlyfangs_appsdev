@@ -2,14 +2,25 @@
 
 
 .custom-input{
-  border: 2px solid #7978787e;
-  border-radius: 8px;
-  padding: 8px;
-  height: 40px;
-  transition: 0.18s ease;
+  border: 2px solid #44424280;
+  border-radius: 2px;
+  padding: 6px 8px;
+  height: 34px;
+  transition: 0.14s ease;
   background: #fff;
-  color: #111827; /* dark text */
+  color: hsla(220, 11%, 5%, 0.946); 
+  font-size: 14px;
+  line-height: 1;
 }
+
+.custom-input:focus{
+  border-color: #f5af19; 
+  box-shadow: 0 6px 18px rgba(245,175,25,0.12), 0 0 0 4px rgba(245,175,25,0.08);
+  outline: none;
+  caret-color: #f59e0b;
+}
+
+
 
 .bgcolorbtncart{
 background: #f12711;  
