@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { HiShoppingCart } from "react-icons/hi";
 import Card from "./components/Card";
+import FeaturedCarousel from "./components/FeaturedCarousel";
 import Cart from './components/Addcart';
 import { IoLogoFacebook } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
@@ -175,14 +176,14 @@ function App() {
               placeholder="Max"
               value={priceRange[1]}
               onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-              className="border rounded-lg px- py-1 w-25 custom-input"
+              className="border rounded-lg px-2 py-1 w-18 custom-input"
             />
           </div>
 
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="border rounded-lg px-2 py-1 w-full md:w-1/6 custom-input"
+            className="border rounded-lg px-2 py-3 w-full md:w-1/6 custom-input"
           >
             <option value="All">All</option>
             <option value="beauty">Beauty</option>
@@ -205,6 +206,9 @@ function App() {
             <p className="text-center text-gray-500 mt-10 custom-input">No products found.</p>
           ) : (
             <>
+              <div className="mb-6 mt-4">
+                <FeaturedCarousel items={filtered.slice(0, 5)} onBuy={handleBuy} />
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {paginated.map((product) => (
                   <Card key={product.id} product={product} onBuy={handleBuy} />
