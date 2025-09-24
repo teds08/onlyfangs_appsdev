@@ -129,7 +129,7 @@ function App() {
       <h1 className="text-3xl font-bold mb-6 text-center">🛍️ OnlyFangs Store</h1>
       <div className="flex flex-col gap-6">
     
-  <div className="w-full bg-white rounded-2xl shadow p-4 flex flex-col md:flex-row gap-3 items-center justify-center">
+  <div className="w-full bgcolorbtncart bg-white rounded-2xl shadow p-4 flex flex-col md:flex-row gap-3 items-center justify-center">
           <input
             type="text"
             placeholder="Search products..."

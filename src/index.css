@@ -4,10 +4,16 @@
 .custom-input{
   border: 2px solid #7978787e;
   border-radius: 8px;
-  padding: 10px;
-  transition: 0.3s;
+  padding: 8px;
+  height: 40px;
+  transition: 0.18s ease;
+  background: #fff;
+  color: #111827; /* dark text */
 }
 
 .bgcolorbtncart{
-  background-color: hsl(25, 88%, 48%);
+background: #f12711;  
+background: -webkit-linear-gradient(to right, #f5af19, #f12711);  
+background: linear-gradient(to right, #f5af19, #f12711);
+
 }
