@@ -125,11 +125,10 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">🛍️ OnlyFangs Store</h1>
+    <div className="min-h-screen bg-gray-50">
       <div className="flex flex-col gap-6">
     
-  <div className="w-full bgcolorbtncart bg-white rounded-2xl shadow p-4 flex flex-col md:flex-row gap-3 items-center justify-center">
+  <div className="w-full bgcolorbtncart bg-white shadow p-4 top-0 z-10 fixed flex flex-col md:flex-row gap-3 items-center justify-center">
           <input
             type="text"
             placeholder="Search products..."
@@ -180,8 +179,8 @@ function App() {
 
          
         </div>
-
-        <main>
+        <main className="mt-32 md:mt-20 mb-10">
+           <h1 className="text-3xl  max-[600px]:text-2xl  max-[600px]:mt-30  max-[769px]:mt-30 font-bold mb-6 text-center">🛍️ OnlyFangs Store</h1>
              <div className="mt-6 flex items-center justify-center gap-3">
                 <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Prev</button>
                 <div className="px-3 py-1 rounded bg-white border">Page {currentPage}</div>
