@@ -77,6 +77,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  
   const handleBuy = (product) => {
     setCartItems((prev) => [...prev, product]);
     console.log('Added to in-memory cart:', product.title);
@@ -204,7 +205,7 @@ function App() {
         <div className="fixed bottom-6 max-[600px]:bottom-15 lg:bottom-4 right-6 z-50">
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2"
+            className="relative bgcolorbtncart text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2"
             aria-label="Open cart"
           >
              <HiShoppingCart className="w-5 h-5" />
