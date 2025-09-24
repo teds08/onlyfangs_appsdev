@@ -137,7 +137,7 @@ function App() {
       <span className="font-semibold texthover text-xs  absolute top-0 left-4 text-white cursor-pointer">Seller Centre <span className="textseparation ">|</span></span>
       <span className="font-semibold texthover text-xs absolute top-0 left-24 text-white cursor-pointer">Start Selling <span className="textseparation ">|</span></span>
       <span className="font-semibold texthover text-xs absolute top-0 left-43 text-white cursor-pointer">Download <span className="textseparation ">|</span></span>
-      <span className="font-semibold texthover text-xs absolute top-0 left-59 text-white cursor-pointer">Follow us on <IoLogoFacebook className="inline-block h-4 w-4 fbhover" /></span>
+      <span className="font-semibold text-xs absolute top-0 left-59 text-white cursor-pointer">Follow us on <IoLogoFacebook className="inline-block h-4 w-4 fbhover" /></span>
       <span className="font-semibold text-xs absolute top-0 left-290 text-white cursor-pointer"><IoIosNotifications className="inline-block h-6 w-6 belnotif" />Notifications</span>
       <span className="font-semibold  text-xs absolute top-0 left-320 text-white cursor-pointer">Log in <span className="textseparation ">|</span> Sign up</span>
 
