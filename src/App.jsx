@@ -2,6 +2,9 @@ import { useEffect, useState, useCallback } from "react";
 import { HiShoppingCart } from "react-icons/hi";
 import Card from "./components/Card";
 import Cart from './components/Addcart';
+import { IoLogoFacebook } from "react-icons/io5";
+import { IoIosNotifications } from "react-icons/io";
+import { LuCircleHelp } from "react-icons/lu";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -129,6 +132,17 @@ function App() {
       <div className="flex flex-col gap-6">
     
   <div className="w-full bgcolorbtncart bg-white shadow p-4 top-0 z-10 fixed flex flex-col md:flex-row gap-3 items-center justify-center">
+    <div className="mb-20 max-[769px]:hidden" >
+      <span className="font-semibold texthover text-xs  absolute top-0 left-4 text-white cursor-pointer">Seller Centre <span className="textseparation ">|</span></span>
+      <span className="font-semibold texthover text-xs absolute top-0 left-24 text-white cursor-pointer">Start Selling <span className="textseparation ">|</span></span>
+      <span className="font-semibold texthover text-xs absolute top-0 left-43 text-white cursor-pointer">Download <span className="textseparation ">|</span></span>
+      <span className="font-semibold texthover text-xs absolute top-0 left-59 text-white cursor-pointer">Follow us on <IoLogoFacebook className="inline-block h-4 w-4 fbhover" /></span>
+      <span className="font-semibold text-xs absolute top-0 left-290 text-white cursor-pointer"><IoIosNotifications className="inline-block h-6 w-6 belnotif" />Notifications</span>
+      <span className="font-semibold  text-xs absolute top-0 left-320 text-white cursor-pointer">Log in <span className="textseparation ">|</span> Sign up</span>
+
+    
+
+    </div>
           <input
             type="text"
             placeholder="Search products..."
@@ -179,8 +193,8 @@ function App() {
 
          
         </div>
-        <main className="mt-32 md:mt-20 mb-10">
-           <h1 className="text-3xl  max-[600px]:text-2xl  max-[600px]:mt-30  max-[769px]:mt-30 font-bold mb-6 text-center">🛍️ OnlyFangs Store</h1>
+        <main className="mt-32 md:mt-20 mb-10 ">
+           <h1 className="text-3xl  max-[600px]:text-2xl  max-[600px]:mt-40 mt-25 max-[769px]:mt-40 font-bold mb-6 text-center">🛍️ OnlyFangs Store</h1>
              <div className="mt-6 flex items-center justify-center gap-3">
                 <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Prev</button>
                 <div className="px-3 py-1 rounded bg-white border">Page {currentPage}</div>
@@ -207,7 +221,7 @@ function App() {
           )}
         </main>
 
-        <div className="fixed bottom-6 max-[600px]:bottom-15 lg:bottom-4 right-6 z-50">
+        <div className="fixed bottom-6 max-[600px]:bottom-20 lg:bottom-4 right-6 z-50">
           <button
             onClick={() => setIsCartOpen(true)}
             className="relative bgcolorbtncart text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2"

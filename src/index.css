@@ -28,3 +28,24 @@ background: -webkit-linear-gradient(to right, #f5af19, #f12711);
 background: linear-gradient(to right, #f5af19, #f12711);
 
 }
+
+.textseparation{
+  color: rgba(144, 130, 130, 0.908);
+}
+
+.fbhover:hover{
+  color: #1155e7;
+}
+
+.belnotif:hover{
+  color: rgb(29, 27, 27);
+}
+
+.helpLheight{
+  line-height: 0;
+  padding: 0;
+}
+
+.texthover:hover{
+  color: rgba(50, 49, 49, 0.478);
+}
