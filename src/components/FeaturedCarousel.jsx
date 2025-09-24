@@ -30,7 +30,7 @@ export default function FeaturedCarousel({ items = [], onBuy }) {
           <p className="text-sm md:text-base">{current.description}</p>
           <div className="mt-2 flex items-center gap-2">
             <div className="text-xl font-semibold">${current.price}</div>
-            <button onClick={() => onBuy && onBuy(current)} className="px-3 py-1 bg-yellow-400 text-black rounded">Buy</button>
+            <button onClick={() => onBuy && onBuy(current)} className="px-3 py-1 bg-yellow-400 text-black rounded cursor-pointer">Add to Cart</button>
           </div>
         </div>
         <button onClick={prev} className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 p-2 rounded-full text-white">

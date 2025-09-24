@@ -229,7 +229,7 @@ function App() {
         <div className="fixed bottom-6 max-[600px]:bottom-20 lg:bottom-4 right-6 z-50">
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative bgcolorbtncart text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2"
+            className="relative bgcolorbtncart text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2 cursor-pointer"
             aria-label="Open cart"
           >
              <HiShoppingCart className="w-5 h-5" />
@@ -245,8 +245,8 @@ function App() {
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold">Your Cart ({cartItems.length})</h3>
                 <div className="flex items-center gap-2">
-                  <button onClick={handleBuyAll} className="px-3 py-1 bg-green-600 text-white rounded">Buy all</button>
-                  <button onClick={() => setIsCartOpen(false)} className="px-3 py-1 border rounded">Close</button>
+                  <button onClick={handleBuyAll} className="px-3 py-1 bg-green-600 text-white rounded cursor-pointer">Buy all</button>
+                  <button onClick={() => setIsCartOpen(false)} className="px-3 py-1 border rounded cursor-pointer">Close</button>
                 </div>
               </div>
               <Cart items={cartItems} onRemove={handleRemoveFromCart} />
