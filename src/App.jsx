@@ -117,7 +117,7 @@ function App() {
 
     try {
       const Swal = await loadSwal();
-      await Swal.fire({ icon: 'success', title: 'Successfully Buy Items! Na Bodol ka Bossing! 🤞' });
+      await Swal.fire({ icon: 'success', title: 'Successfully Buy Items! Na Bodol ka Bossing! ✌' });
     } catch (err) {
    
       alert('Successfully Buy Items!');
