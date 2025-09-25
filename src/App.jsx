@@ -19,7 +19,7 @@ function App() {
 
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(9);
+  const [pageSize, setPageSize] = useState(6);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -206,9 +206,9 @@ function App() {
                 <FeaturedCarousel items={filtered.slice(0, 5)} onBuy={handleBuy} />
               </div>
                  <div className="mt-6 flex items-center justify-center gap-3">
-                <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Prev</button>
-                <div className="px-3 py-1 rounded bg-white border">Page {currentPage}</div>
-                <button onClick={() => goToPage(currentPage + 1)} disabled={paginated.length < pageSize} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Next</button>
+                <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50 cursor-pointer">Prev</button>
+                <div className="px-3 py-1 rounded bg-white">Page {currentPage}</div>
+                <button onClick={() => goToPage(currentPage + 1)} disabled={paginated.length < pageSize} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50 cursor-pointer">Next</button>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {paginated.map((product) => (
@@ -218,9 +218,9 @@ function App() {
 
           
               <div className="mt-6 flex items-center justify-center gap-3">
-                <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Prev</button>
-                <div className="px-3 py-1 rounded bg-white border">Page {currentPage}</div>
-                <button onClick={() => goToPage(currentPage + 1)} disabled={paginated.length < pageSize} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50">Next</button>
+                <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50 cursor-pointer">Prev</button>
+                <div className="px-3 py-1 rounded bg-white ">Page {currentPage}</div>
+                <button onClick={() => goToPage(currentPage + 1)} disabled={paginated.length < pageSize} className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50 cursor-pointer">Next</button>
               </div>
             </>
           )}
