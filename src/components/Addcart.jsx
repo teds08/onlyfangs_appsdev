@@ -6,22 +6,41 @@ function Cart({ items = [], onRemove = () => {} }) {
   }
 
   return (
-    <div className="space-y-3">
+
+<div className="flex justify-center">
+  <div className="w-full max-w-5xl bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+    <h2 className="text-xl font-semibold text-gray-800 mb-6">Your Cart</h2>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {items.map((p, i) => (
-        <div key={i} className="flex items-center gap-3 border rounded p-3">
+        <div
+          key={i}
+          className="bg-gray-50 rounded-xl shadow-sm border border-gray-200 p-4 flex flex-col items-center hover:shadow-md transition"
+        >
           {p.images && p.images[0] && (
-            <img src={p.images[0]} alt={p.title} className="w-16 h-16 object-cover rounded" />
+            <img
+              src={p.images[0]}
+              alt={p.title}
+              className="w-28 h-28 object-cover rounded-lg mb-3"
+            />
           )}
-          <div className="flex-1">
-            <div className="font-semibold">{p.title}</div>
-            <div className="text-sm text-gray-600">${p.price}</div>
+          <div className="text-center flex-1">
+            <div className="font-medium text-gray-800">{p.title}</div>
+            <div className="text-gray-500 mt-1">${p.price}</div>
           </div>
-          <div>
-            <button onClick={() => onRemove(i)} className="px-3 py-1 border rounded">Remove</button>
-          </div>
+          <button
+            onClick={() => onRemove(i)}
+            className="mt-3 px-4 py-2 w-full rounded-lg bg-red-500 text-white text-sm font-medium hover:bg-red-600 active:scale-95 transition cursor-pointer"
+          >
+            Remove
+          </button>
         </div>
       ))}
     </div>
+  </div>
+</div>
+
+
   )
 }
 
