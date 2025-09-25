@@ -246,7 +246,7 @@ function App() {
                 <h3 className="text-lg font-semibold">Your Cart ({cartItems.length})</h3>
                 <div className="flex items-center gap-2">
                   <button onClick={handleBuyAll} className="px-3 py-1 bg-green-600 text-white rounded cursor-pointer">Buy all</button>
-                  <button onClick={() => setIsCartOpen(false)} className="px-3 py-1 border rounded cursor-pointer">Close</button>
+                  <button onClick={() => setIsCartOpen(false)} className="px-3 py-1 bg-gray-400 text-white rounded cursor-pointer">Close</button>
                 </div>
               </div>
               <Cart items={cartItems} onRemove={handleRemoveFromCart} />

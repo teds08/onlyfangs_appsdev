@@ -9,8 +9,6 @@ function Cart({ items = [], onRemove = () => {} }) {
 
 <div className="flex justify-center">
   <div className="w-full max-w-5xl bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
-    <h2 className="text-xl font-semibold text-gray-800 mb-6">Your Cart</h2>
-
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {items.map((p, i) => (
         <div
