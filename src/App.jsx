@@ -19,7 +19,7 @@ function App() {
 
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(6);
+  const pageSize = 6; 
 
   useEffect(() => {
     async function fetchProducts() {
