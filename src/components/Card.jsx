@@ -20,7 +20,7 @@ function Card({ product, onBuy }) {
       <div className="mt-4">
          <button
         onClick={handleBuy}
-        className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 transition"
+        className="w-full cursor-pointer flex items-center justify-center gap-2 bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 transition"
       >
     
         <FaCartPlus className="w-5 h-5" />

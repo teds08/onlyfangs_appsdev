@@ -14,7 +14,7 @@
 }
 
 .custom-input:focus{
-  border-color: #f5af19; 
+  border-color: #f58019; 
   box-shadow: 0 6px 18px rgba(245,175,25,0.12), 0 0 0 4px rgba(245,175,25,0.08);
   outline: none;
   caret-color: #f59e0b;
@@ -48,4 +48,12 @@ background: linear-gradient(to right, #f5af19, #f12711);
 
 .texthover:hover{
   color: rgba(50, 49, 49, 0.478);
+}
+body,html{
+   scrollbar-width:thin;
+scrollbar-color:gray;
+}
+
+.inputrounded{
+  border-radius: 20px;
 }

@@ -149,7 +149,7 @@ function App() {
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border rounded-lg px-2 py-1 w-full md:w-2/5 custom-input"
+            className="border inputrounded px-2 py-1 w-full md:w-2/5 custom-input"
           />
 
           <select
@@ -168,7 +168,7 @@ function App() {
               placeholder="Min"
               value={priceRange[0]}
               onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
-              className="border rounded-lg px-2 py-1 w-20 custom-input"
+              className="border inputrounded px-2 py-1 w-20 custom-input"
             />
             <span>-</span>
             <input
@@ -176,7 +176,7 @@ function App() {
               placeholder="Max"
               value={priceRange[1]}
               onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-              className="border rounded-lg px-2 py-1 w-18 custom-input"
+              className="border inputrounded px-2 py-1 w-18 custom-input"
             />
           </div>
 
