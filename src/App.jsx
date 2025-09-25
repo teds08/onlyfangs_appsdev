@@ -5,7 +5,7 @@ import FeaturedCarousel from "./components/FeaturedCarousel";
 import Cart from './components/Addcart';
 import { IoLogoFacebook } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
-import { LuCircleHelp } from "react-icons/lu";
+
 
 function App() {
   const [products, setProducts] = useState([]);
